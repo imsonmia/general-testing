@@ -1,3 +1,4 @@
+# Last edited 2021-01-25 13:35:10
 import hackchat
 import sys
 import time
@@ -36,6 +37,15 @@ if __name__ == '__main__':
 ==========Commands List==========
 =help: Print a list of help
 =silence [n]: Silence the bot for [n] seconds''')
+                return
+            elif message == '=shutdown':
+                sys.exit()
+            elif message == '=info':
+                bot.send_message('This')
+            elif message == '=time':
+                print(time.localtime())
+            else:
+                bot.send_message('ERROR: Unknown Command, type "=help" for command help.')
 
 
     server = input("Connect to hack.chat/?:")
@@ -46,4 +56,3 @@ if __name__ == '__main__':
     bot.on_leave += [log]
     bot.on_message += [listener, commands]
     bot.run()
-
