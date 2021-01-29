@@ -1,10 +1,14 @@
 # Git VCS linked to GitHub repository
-# Last Edited 2021-01-27 15:54:09
+# Last Edited 2021-01-29 09:36:25
 import time
+from tkinter import *
 
 
 def main():  # Main feature of the program
     print("If you see this string, you've successfully logged in")
+    shell = Tk()
+    shell.wm_title("App a0.1")
+    shell.wm_geometry("800x600")
     return
 
 
