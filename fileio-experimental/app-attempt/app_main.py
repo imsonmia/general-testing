@@ -15,6 +15,8 @@ if __name__ == '__main__':  # Check if the program is used a a module
         password_cache = open(file='pass_cache.txt', mode='r', buffering=1)
         user_current = usr_cache.read()
         pass_current = password_cache.read()
+        usr_cache.close()
+        password_cache.close()
 
         if user_current != '' and pass_current != '':
             usr_ = open("info.txt", 'r', buffering=1)
@@ -58,6 +60,8 @@ if __name__ == '__main__':  # Check if the program is used a a module
                         user_Write.write(user)
                         password_Write = open("pass_cache.txt", 'w', buffering=1)
                         password_Write.write(password)
+                        user_Write.close()
+                        password_Write.close()
                         main()
                     else:
                         print(f"Username or password incorrect, please retry, you have {str(5-tries)} tries left")
@@ -137,3 +141,4 @@ if __name__ == '__main__':  # Check if the program is used a a module
             pass
         finally:
             print("Files created successfully, please restart the program.")
+            input("Press ENTER to close the program...")

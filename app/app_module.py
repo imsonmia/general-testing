@@ -3,6 +3,11 @@ import sys
 
 
 def exit_():
+    cache_clear = open(file="usr_cache.txt", mode="w", buffering=1)
+    cache_clear_2 = open(file="usr_cache.txt",mode="w", buffering=1)
+    cache_clear.write('')
+    cache_clear_2.write('')
+    cache_clear.close()
     sys.exit()
 
 
