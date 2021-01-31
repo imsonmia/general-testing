@@ -1,22 +1,12 @@
 # Git VCS linked to GitHub repository
 # Last Edited 2021-01-31 18:57:49
 import time
+import app
 from tkinter import *
-import sys
-
-
-def exit_():
-    sys.exit()
 
 
 def main():  # Main feature of the program
-    print("If you see this string, you've successfully logged in")
-    shell = Tk()
-    shell.wm_title("App a0.1")
-    shell.wm_geometry("800x600")
-    exit_btn = Button(shell, text="Exit", command=exit_())
-    exit_btn.pack()
-    shell.mainloop()
+    app.App()
     return
 
 
