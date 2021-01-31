@@ -1,8 +1,12 @@
 # Git VCS linked to GitHub repository
-# Last Edited 2021-01-29 09:36:25
+# Last Edited 2021-01-31 18:57:49
 import time
 from tkinter import *
-import os
+import sys
+
+
+def exit_():
+    sys.exit()
 
 
 def main():  # Main feature of the program
@@ -10,6 +14,8 @@ def main():  # Main feature of the program
     shell = Tk()
     shell.wm_title("App a0.1")
     shell.wm_geometry("800x600")
+    exit_btn = Button(shell, text="Exit", command=exit_())
+    exit_btn.pack()
     shell.mainloop()
     return
 
@@ -121,6 +127,7 @@ if __name__ == '__main__':  # Check if the program is used a a module
             new_user_write_file.close()
             new_pass_write_file.close()
             pass_usr_file.close()
+            main()
 
         else:
             print('Unknown Error, contact author at imsonmia@outlook.com for support')
@@ -133,6 +140,10 @@ if __name__ == '__main__':  # Check if the program is used a a module
             pass
         try:
             new_file_pass = open(file="pass_cache.txt", mode='x', buffering=1)
+        except FileExistsError:
+            pass
+        try:
+            new_file_info = open("info.txt", mode='x', buffering=1)
         except FileExistsError:
             pass
         finally:

@@ -129,5 +129,6 @@ dmypy.json
 .pyre/
 
 # usr-created
+fileio-experimental/app-attempt/info.txt
 fileio-experimental/app-attempt/pass_cache.txt
 fileio-experimental/app-attempt/usr_cache.txt
