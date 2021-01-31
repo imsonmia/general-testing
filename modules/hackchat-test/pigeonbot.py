@@ -48,8 +48,6 @@ if __name__ == '__main__':
                 bot.send_message('ERROR: Unknown Command, type "=help" for command help.')
 
 
-    info = open("info.txt", "r")
-    print(info.read())
     input("Yes?")
     server = input("Log onto?:")
     nick = input("Log in as?:")

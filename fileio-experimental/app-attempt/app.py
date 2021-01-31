@@ -2,6 +2,7 @@
 # Last Edited 2021-01-29 09:36:25
 import time
 from tkinter import *
+import os
 
 
 def main():  # Main feature of the program
@@ -9,6 +10,7 @@ def main():  # Main feature of the program
     shell = Tk()
     shell.wm_title("App a0.1")
     shell.wm_geometry("800x600")
+    shell.mainloop()
     return
 
 
@@ -51,15 +53,20 @@ if __name__ == '__main__':  # Check if the program is used a a module
                 password_cache.close()
                 main()  # Made the main feature a function to make the code more readable
             else:
-                print("User log information invalid, please type in your username again.")
-                user = str(input("Username: "))
-                password = str(input("Password: "))
-                if user in users and password in passwords:
-                    user_Write = open("usr_cache.txt", 'w', buffering=1)
-                    user_Write.write(user)
-                    password_Write = open("pass_cache.txt", 'w', buffering=1)
-                    password_Write.write(user)
-                    main()
+                tries = 0
+                while tries <= 5:
+                    print("Please type in your username")
+                    user = str(input("Username: "))
+                    password = str(input("Password: "))
+                    if user in users and password in passwords:
+                        user_Write = open("usr_cache.txt", 'w', buffering=1)
+                        user_Write.write(user)
+                        password_Write = open("pass_cache.txt", 'w', buffering=1)
+                        password_Write.write(password)
+                        main()
+                    else:
+                        print(f"Username or password incorrect, please retry, you have {str(5-tries)} tries left")
+                        tries += 1
         elif user_current == '' and pass_current != '':
             pass_check = str(input("Type in your password to verify this is you: "))
             tries = 0
@@ -110,7 +117,7 @@ if __name__ == '__main__':  # Check if the program is used a a module
             new_user_write_file.write(new_user)
             new_pass_write_file.write(new_pass)
             pass_usr_file = open(file='info.txt', mode='a', buffering=1)
-            pass_usr_file.write(f"{new_user}\n{new_pass}")
+            pass_usr_file.write(f"{new_user}\n{new_pass}\n")
             new_user_write_file.close()
             new_pass_write_file.close()
             pass_usr_file.close()
@@ -120,6 +127,13 @@ if __name__ == '__main__':  # Check if the program is used a a module
 
     except FileNotFoundError:
         print("Didn't detect files, making new ones...")
-        new_file_usr = open(file="usr_cache.txt", mode='x', buffering=1)
-        new_file_pass = open(file="pass_cache.txt", mode='x', buffering=1)
-        print("Files created successfully, please restart the program.")
+        try:
+            new_file_usr = open(file="usr_cache.txt", mode='x', buffering=1)
+        except FileExistsError:
+            pass
+        try:
+            new_file_pass = open(file="pass_cache.txt", mode='x', buffering=1)
+        except FileExistsError:
+            pass
+        finally:
+            print("Files created successfully, please restart the program.")
